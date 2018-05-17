@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PricesController">
+   <children>
+      <Pane layoutX="157.0" layoutY="51.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="btn_vissza" layoutX="483.0" layoutY="335.0" mnemonicParsing="false" onAction="#vissza" text="Vissza" />
+            <Label layoutX="186.0" layoutY="59.0" text="Árjegyzék" underline="true">
+               <font>
+                  <Font size="53.0" />
+               </font>
+            </Label>
+            <Label layoutX="258.0" layoutY="175.0" text="Felnőtt - 1000Ft" textAlignment="CENTER" />
+            <Label layoutX="268.0" layoutY="218.0" text="Diák - 500Ft" textAlignment="CENTER" />
+            <Label layoutX="253.0" layoutY="262.0" text="Nyugdíjas - 500Ft" textAlignment="CENTER" />
+            <Label layoutX="214.0" layoutY="309.0" prefHeight="17.0" prefWidth="173.0" text="Gyerek ( 12 év alatt) - Ingyenes" textAlignment="CENTER" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
