@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainPageController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0" style="" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="btn_megtekintes" layoutX="227.0" layoutY="288.0" mnemonicParsing="false" onAction="#megtekintes" text="Foglalások megtekintése" textAlignment="CENTER" />
+            <Button fx:id="btn_foglalas" layoutX="264.0" layoutY="370.0" mnemonicParsing="false" onAction="#foglalas" text="Új foglalás" textAlignment="CENTER" />
+            <Button fx:id="btn_arjegyzek" layoutX="266.0" layoutY="453.0" mnemonicParsing="false" onAction="#ar" text="Árjegyzék" textAlignment="CENTER" />
+            <Label layoutX="141.0" layoutY="99.0" text="SPLASH" textAlignment="CENTER">
+               <font>
+                  <Font name="MS Reference Sans Serif" size="80.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
