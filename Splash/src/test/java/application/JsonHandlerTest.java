@@ -2,6 +2,7 @@ package application;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class JsonHandlerTest {
 
 	
 	 @Test
-	 public void reservetionReaderTester() {
+	 public void reservetionReaderTester() throws FileNotFoundException {
 		 JsonHandler handler = new JsonHandler();
 		 Reservation reservation = new Reservation("25", "2018513", "2", "4");
 		 List<Reservation> list = new ArrayList<>();

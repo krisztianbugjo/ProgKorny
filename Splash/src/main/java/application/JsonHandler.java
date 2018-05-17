@@ -12,6 +12,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import models.Reservation;
 
@@ -20,6 +22,8 @@ import models.Reservation;
  */
 
 public class JsonHandler {
+	
+	private static Logger logger = LoggerFactory.getLogger(ReservationCreatorController.class);
 	
 	
 	
@@ -62,7 +66,7 @@ public class JsonHandler {
 	 * A fájlból kiolvassa az összes foglalást, és kigyűjti őket egy listába.
 	 */
 
-	public List<Reservation> read() {
+	public List<Reservation> read() throws FileNotFoundException {
 		JSONParser parser = new JSONParser();
 		List<Reservation> reservations = new ArrayList<Reservation>();
 
@@ -89,11 +93,14 @@ public class JsonHandler {
 			}
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.error(e.toString());
+//			e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e.toString());
+//			e.printStackTrace();
 		} catch (ParseException e) {
-			e.printStackTrace();
+			logger.error(e.toString());
+//			e.printStackTrace();
 		}
 		return reservations;
 	}

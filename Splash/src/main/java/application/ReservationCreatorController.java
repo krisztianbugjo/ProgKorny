@@ -1,10 +1,12 @@
 package application;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -123,7 +125,11 @@ public class ReservationCreatorController {
 		getDate25();
 		String id25 = "";
 		JsonHandler handler = new JsonHandler();
+		try {
 		list = handler.read();
+		}catch(FileNotFoundException e) {
+			logger.error(e.toString());
+		}
 		for (Reservation reservation : list) {
 
 			if (reservation.getDate().equals(date25)) {
@@ -220,7 +226,12 @@ public class ReservationCreatorController {
 		getDate50();
 		String id50 = "";
 		JsonHandler handler = new JsonHandler();
+		try {
 		list = handler.read();
+		}catch(FileNotFoundException e) {
+			logger.error(e.toString());
+		}
+	
 		for (Reservation reservation : list) {
 
 			if (reservation.getDate().equals(date50)) {
