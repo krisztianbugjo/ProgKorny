@@ -18,23 +18,19 @@ import org.slf4j.LoggerFactory;
 import models.Reservation;
 
 /**
- *JSon fájl irását/olvasását irányító osztály.
+ * JSon fájl irását/olvasását irányító osztály.
  */
 
 public class JsonHandler {
-	
+
 	private static Logger logger = LoggerFactory.getLogger(ReservationCreatorController.class);
-	
-	
-	
-/**
- * A fájl írását írányító függvény.
- * A függvény megkap egy listát, melyben 4 paraméter van, majd ezeket a megfelelő helyre írja a fájlban.
- */
+
+	/**
+	 * A fájl írását írányító függvény. A függvény megkap egy listát, melyben 4
+	 * paraméter van, majd ezeket a megfelelő helyre írja a fájlban.
+	 */
 	public void jWrite(List<Reservation> list) {
-		
-		
-		
+
 		JSONObject MainObj = new JSONObject();
 		JSONArray JsonList = new JSONArray();
 		for (Reservation reservation : list) {
@@ -49,7 +45,7 @@ public class JsonHandler {
 		MainObj.put("reservations", JsonList);
 
 		ClassLoader classLoader = getClass().getClassLoader();
-		
+
 		try (FileWriter file = new FileWriter(classLoader.getResource("reservations.json").getFile())) {
 
 			file.write(MainObj.toJSONString());
@@ -59,18 +55,22 @@ public class JsonHandler {
 			e.printStackTrace();
 		}
 
-
 	}
-	
+
 	/**
 	 * A fájlból kiolvassa az összes foglalást, és kigyűjti őket egy listába.
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
 	 */
 
-	public List<Reservation> read() throws FileNotFoundException {
+	public List<Reservation> read() throws  FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
 		List<Reservation> reservations = new ArrayList<Reservation>();
 
 		try {
+			
+
 			Object obj;
 
 			ClassLoader classLoader = getClass().getClassLoader();
@@ -94,13 +94,17 @@ public class JsonHandler {
 
 		} catch (FileNotFoundException e) {
 			logger.error(e.toString());
-//			e.printStackTrace();
+			throw new FileNotFoundException();
+			// e.printStackTrace();
 		} catch (IOException e) {
 			logger.error(e.toString());
-//			e.printStackTrace();
+			throw new IOException();
+			// e.printStackTrace();
 		} catch (ParseException e) {
 			logger.error(e.toString());
-//			e.printStackTrace();
+			throw new ParseException(0);
+			
+			// e.printStackTrace();
 		}
 		return reservations;
 	}
