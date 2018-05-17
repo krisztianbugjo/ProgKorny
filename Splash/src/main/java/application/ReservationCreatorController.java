@@ -129,6 +129,12 @@ public class ReservationCreatorController {
 		list = handler.read();
 		}catch(FileNotFoundException e) {
 			logger.error(e.toString());
+		} catch (IOException e) {
+			logger.error(e.toString());
+			e.printStackTrace();
+		} catch (ParseException e) {
+			logger.error(e.toString());
+			e.printStackTrace();
 		}
 		for (Reservation reservation : list) {
 
@@ -230,6 +236,12 @@ public class ReservationCreatorController {
 		list = handler.read();
 		}catch(FileNotFoundException e) {
 			logger.error(e.toString());
+		} catch (IOException e) {
+			logger.error(e.toString());
+			e.printStackTrace();
+		} catch (ParseException e) {
+			logger.error(e.toString());
+			e.printStackTrace();
 		}
 	
 		for (Reservation reservation : list) {

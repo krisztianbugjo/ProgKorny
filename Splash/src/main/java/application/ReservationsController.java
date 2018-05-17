@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -110,11 +111,17 @@ public class ReservationsController {
 		String date25 = ev25.toString() + honap25.toString() + nap25.toString();
 
 		JsonHandler handler = new JsonHandler();
-		try {
-		list = handler.read();
-		}catch(FileNotFoundException e) {
-			logger.error(e.toString());
-		}
+			try {
+				list = handler.read();
+				}catch(FileNotFoundException e) {
+					logger.error(e.toString());
+				} catch (IOException e) {
+					logger.error(e.toString());
+					e.printStackTrace();
+				} catch (ParseException e) {
+					logger.error(e.toString());
+					e.printStackTrace();
+				}
 		for (Reservation reservation : list) {
 
 			if (reservation.getDate().equals(date25)) {
@@ -217,6 +224,12 @@ public class ReservationsController {
 		list = handler.read();
 		}catch(FileNotFoundException e) {
 			logger.error(e.toString());
+		} catch (IOException e) {
+			logger.error(e.toString());
+			e.printStackTrace();
+		} catch (ParseException e) {
+			logger.error(e.toString());
+			e.printStackTrace();
 		}
 		for (Reservation reservation : list) {
 			id50 = "Reservation" + reservation.getPoolId() + reservation.getLane() + reservation.getTime();

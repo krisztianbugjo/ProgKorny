@@ -3,9 +3,11 @@ package application;
 import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.parser.ParseException;
 import org.junit.Test;
 
 import models.Reservation;
@@ -21,7 +23,12 @@ public class JsonHandlerTest {
 		 list.add(reservation);
 		 handler.jWrite(list);
 		 
-		 assertEquals(new Reservation("25", "2018513", "2", "4"), handler.read().get(0));
+		 try {
+			assertEquals(new Reservation("25", "2018513", "2", "4"), handler.read().get(0));
+		} catch (IOException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 
 		 
 	 }

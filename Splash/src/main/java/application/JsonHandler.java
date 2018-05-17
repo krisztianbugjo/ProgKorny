@@ -59,9 +59,9 @@ public class JsonHandler {
 
 	/**
 	 * A fájlból kiolvassa az összes foglalást, és kigyűjti őket egy listába.
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ParseException
+	 * @throws FileNotFoundException amikor nem találja a szükséges JSON fájlt.
+	 * @throws IOException A fájl nem volt tökéletesen olvasva, írva vagy bezárva.
+	 * @throws ParseException A parse-olás nem volt sikeres.
 	 */
 
 	public List<Reservation> read() throws  FileNotFoundException, IOException, ParseException {
