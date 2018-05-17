@@ -1,8 +1,13 @@
 package application;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +26,18 @@ import models.Reservation;
  *
  */
 public class ReservationsController {
+	
+	/**
+	 * Logolásért felelős adattag.
+	 */
+	
+	private static Logger logger = LoggerFactory.getLogger(ReservationCreatorController.class);
 
+	/**
+	 * Foglalásokat tartalmazó lista.
+	 */
+	List<Reservation> list = new ArrayList<Reservation>();
+	
 	/**
 	 * A gomb hatására visszalépünk a főmenübe.
 	 */
@@ -94,7 +110,11 @@ public class ReservationsController {
 		String date25 = ev25.toString() + honap25.toString() + nap25.toString();
 
 		JsonHandler handler = new JsonHandler();
-		List<Reservation> list = handler.read();
+		try {
+		list = handler.read();
+		}catch(FileNotFoundException e) {
+			logger.error(e.toString());
+		}
 		for (Reservation reservation : list) {
 
 			if (reservation.getDate().equals(date25)) {
@@ -193,7 +213,11 @@ public class ReservationsController {
 		String date50 = ev50.toString() + honap50.toString() + nap50.toString();
 
 		JsonHandler handler = new JsonHandler();
-		List<Reservation> list = handler.read();
+		try {
+		list = handler.read();
+		}catch(FileNotFoundException e) {
+			logger.error(e.toString());
+		}
 		for (Reservation reservation : list) {
 			id50 = "Reservation" + reservation.getPoolId() + reservation.getLane() + reservation.getTime();
 			if (reservation.getDate().equals(date50)) {
